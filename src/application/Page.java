@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -37,7 +38,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-public class Main extends Application {
+public class Page extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
@@ -153,7 +154,7 @@ public class Main extends Application {
 		//Bouton Log In
 		Button loginButton = new Button("Log In");
 		loginButton.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
-		
+
 		
 		
 		/**
@@ -179,127 +180,292 @@ public class Main extends Application {
 		//Fusion de la bannière et de la navbar pour créer le header dans un conteneur VBox (vertical)
 		VBox header = new VBox(banner, navbar); //Dans l'odre, la bannière est au dessus de la navbar
 		root.setTop(header); //Place le header en haut de la fenêtre
-
 		
-
 		
 		
 		/**
 		 * ----------------------- Body -----------------------
 		 * Contient : 
-		 * - le slogan
-		 * - la liste des fandoms favoris
-		 * - le liste des tags favoris
+		 * - l'en-tête
+		 * - section 1
+		 * - section 2
+		 * - section 3
+		 * - volet Filters sur la droite
 		 */
 		
-		//Création du slogan découpé en 2 car slogan1 doit être plus gros que slogan2
-		Label slogan1 = new Label("Share and have access to fanworks !\n" + "Welcome to AO3");
-		Label slogan2 = new Label("Created by FANS\n" + "Run by FANS\n" + "Non profit !");
 		
-		slogan1.setFont(Font.font("Arial", FontWeight.BOLD, 30)); //Police Arial, en gras et de taille 30
-		slogan1.setTextAlignment(TextAlignment.CENTER); //Alignement du slogan1 au centre
+		//L'en-tête
+		Label booksAndLiterature = new Label("Books & Litterature");
+		booksAndLiterature.setPadding(new Insets(10)); //Ajout d'un espace de 10 autour de la bannière
+		booksAndLiterature.setFont(Font.font("Arial", FontWeight.BOLD, 16)); //Police Arial, en gras et de taille 16
 		
-		slogan2.setFont(Font.font("Arial", FontWeight.BOLD, 20)); //Police Arial, en gras et de taille 20
-		slogan2.setTextAlignment(TextAlignment.CENTER); //Alignement du slogan2 au centre
+		
+		//Menu déroulant Search
+		MenuButton sortBy = new MenuButton("Sort By");
+		//Création des boutons
+		Button buttonPagination1 = new Button("<<");
+        Button buttonPagination2 = new Button("<");
+        Button buttonPagination3 = new Button("1");
+        Button buttonPagination4 = new Button("2");
+        Button buttonPagination5 = new Button("3");
+        Button buttonPagination6 = new Button("7");
+        Button buttonPagination7 = new Button("9");
+        Button buttonPagination8 = new Button("10");
+        Button buttonPagination9 = new Button(">");
+        Button buttonPagination10 = new Button(">>");
+        HBox pagination = new HBox(10); //conteneur Hbox (horizontal), espace de 10 entre les boutons
+        //Ajout des boutons dans le menu déroulant
+        pagination.getChildren().addAll(
+        		buttonPagination1, 
+        		buttonPagination2, 
+        		buttonPagination3, 
+        		buttonPagination4, 
+        		buttonPagination5, 
+        		buttonPagination6, 
+        		buttonPagination7, 
+        		buttonPagination8, 
+        		buttonPagination9, 
+        		buttonPagination10);
+        pagination.setAlignment(Pos.CENTER); //Centre les boutons
+		
+		
+        //Section 1
+        
+        //Titre oeuvre
+        Label titreFiction1 = new Label("Every Wrong with Harry Potter");
+        titreFiction1.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+        
+        //Nom auteur
+        Label auteur1 = new Label("By WittyWizard99");
+        auteur1.setPadding(new Insets(2)); //Ajoute de l'espace autour du nom de l'auteur
+        auteur1.setFont(Font.font("Arial", FontWeight.BOLD, 10)); //Police Arial, en gras et de taille 10
+        
+        //Description
+        Label description1 = new Label("A satirical take on the Harry Potter series, highlighting plot holes, character "
+        		+ "inconsistencies,\nand humorous critiques. The story playfully dissects key moments in the wizarding world,\n"
+        		+ "offering witty commentary and alternative perspectives.");
+       
+        //Status
+        Label status1 = new Label("Status : Completed");
+        status1.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
 
-		
-		//Fandoms favoris
-		Label favoritesTitre = new Label("Find Your Favorites"); //Création d'un titre
-		favoritesTitre.setPadding(new Insets(10)); //Ajoute de l'espace autour du titre
-		favoritesTitre.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
-		//Création d'un conteneur VBox (vertical)
-		VBox favoritesLiens = new VBox(); 
-		//Création des liens
-		Hyperlink animeManga = new Hyperlink("Anime & Manga");
-		Hyperlink booksLiterature = new Hyperlink("Books & Literature");
-		Hyperlink cartoonsComics = new Hyperlink("Cartoons & Comics & Graphic Novels");
-		Hyperlink celebritiesPeople = new Hyperlink("Celebrities & Real People");
-		Hyperlink movies = new Hyperlink("Movies");
-		Hyperlink theater = new Hyperlink("Theater");
-		Hyperlink tvShows = new Hyperlink("TV Shows");
-		Hyperlink videoGames = new Hyperlink("Video Games");
-		//Affectation des liens dans le conteneur
-		favoritesLiens.getChildren().addAll(
-				animeManga, 
-				booksLiterature, 
-				cartoonsComics, 
-				celebritiesPeople, 
-				movies, 
-				theater, 
-				tvShows, 
-				videoGames);
+        //Hastags
+        Button button1 = new Button("#Humor");
+        Button button2 = new Button("#Satire");
+        Button button3 = new Button("#HarryPotter");
+        Button button4 = new Button("#Hogwarts");
+        Button button5 = new Button("#AllAges");
+        button1.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button2.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button3.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button4.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button5.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+       
+        //Dernier chapitre
+        Label lastChapitre1 = new Label("Last Chapter : 15");
+        lastChapitre1.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+       
+        //Création d'un conteneur pour aligner les boutons tags à l'horizontal
+        HBox hastags1 = new HBox(10); //10 est l'espacement entre les boutons
+        //Ajout des boutons dans le menu déroulant
+        hastags1.getChildren().addAll(
+        		button1, 
+        		button2, 
+        		button3,
+        		button4, 
+        		button5);
+        
+        //Création d'un conteneur pour aligner tous les éléments de la section 1 à la verticale
+        VBox section1 = new VBox(10, titreFiction1, auteur1, description1, status1, hastags1, lastChapitre1);
+        section1.setPadding(new Insets(20)); //Ajoute un espace de 20 autour de la section
+        section1.setStyle("-fx-background-color: #F2EEEE; -fx-background-radius: 10px;");
+        section1.setAlignment(Pos.CENTER_LEFT); //Aligne au centre à gauche
+       
+        
+        
+        //Section 2
+        
+        //Titre oeuvre
+        Label titreFiction2 = new Label("Harry Potter and the Sorcerer’s Stone (Reimagined)");
+        titreFiction2.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+        
+        //Nom auteur
+        Label auteur2 = new Label("By MagicalRewrites");
+        auteur2.setPadding(new Insets(2)); //Ajoute de l'espace autour du nom de l'auteur
+        auteur2.setFont(Font.font("Arial", FontWeight.BOLD, 10)); //Police Arial, en gras et de taille 12
+        
+        //Description
+        Label description2 = new Label("A reimagined version of the first book in the series, "
+        		+ "where small changes in Harry's first year\nlead to new outcomes.");
+        
+        //Status
+        Label status2 = new Label("Status : Ongoing");
+        status2.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
 
+        
+        //Hastags
+        Button button11 = new Button("#Adventure");
+        Button button22 = new Button("#AlternateUniverse");
+        Button button33 = new Button("#HarryPotter");
+        Button button44 = new Button("#Magic");
+        button11.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button22.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button33.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button44.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        
+        //Dernier chapitre
+        Label lastChapitre2 = new Label("Last Chapter : 20");
+        lastChapitre2.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+        
+        //Création d'un conteneur pour aligner les boutons tags à l'horizontal
+        HBox hastags2 = new HBox(10); //10 est l'espacement entre les boutons
+        //Ajout des boutons dans le menu déroulant
+        hastags2.getChildren().addAll(
+        		button11, 
+        		button22,
+        		button33,
+        		button44);
+        
+        //Création d'un conteneur pour aligner tous les éléments de la section 2 à la verticale
+        VBox section2 = new VBox(10, titreFiction2, auteur2, description2, status2, hastags2, lastChapitre2);
+        section2.setPadding(new Insets(20)); //Ajoute un espace de 20 autour de la section
+        section2.setStyle("-fx-background-color: #F2EEEE; -fx-background-radius: 10px;");
+        section2.setAlignment(Pos.CENTER_LEFT); //Aligne au centre à gauche
+        
+        
+        
+        //Section 3
+        
+        //Titre oeuvre
+        Label titreFiction3 = new Label("Ephemeral Harry Potter");
+        titreFiction3.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+        
+        //Nom auteur
+        Label auteur3 = new Label("By LumosFading");
+        auteur3.setPadding(new Insets(2)); //Ajoute de l'espace autour du nom de l'auteur
+        auteur3.setFont(Font.font("Arial", FontWeight.BOLD, 10)); //Police Arial, en gras et de taille 10
+        
+        //Description
+        Label description3 = new Label("This emotional exploration delves into Harry’s struggles with fame, loss, and identity,focusing\n"
+        		+ "non overlooked moments in his life.");
+        
+        //Status
+        Label status3 = new Label("Status : Ongoing");
+        status3.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+
+        //Hastags
+        Button button111 = new Button("#HarryPotter");
+        Button button222 = new Button("#Drama");
+        Button button333 = new Button("#Emotional");
+        Button button444 = new Button("#SelfDiscovery");
+        button111.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button222.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button333.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        button444.setStyle("-fx-background-color: #828282; -fx-text-fill: white;");
+        
+        //Dernier chapitre
+        Label lastChapitre3 = new Label("Last Chapter : 20");
+        lastChapitre3.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
+        
+        //Création d'un conteneur pour aligner les boutons tags à l'horizontal
+        HBox hastags3 = new HBox(10); //10 est l'espacement entre les boutons
+        //Ajout des boutons dans le menu déroulant
+        hastags3.getChildren().addAll(
+        		button111, 
+        		button222, 
+        		button333, 
+        		button444);
+        
+        //Création d'un conteneur pour aligner tous les éléments de la section 3 à la verticale
+        VBox section3 = new VBox(10, titreFiction3, auteur3, description3, status3, hastags3, lastChapitre3);
+        section3.setPadding(new Insets(20)); // Ajoute un espace de 20 autour de la section
+        section3.setStyle("-fx-background-color: #F2EEEE; -fx-background-radius: 10px;");
+        section3.setAlignment(Pos.CENTER_LEFT); //Aligne au centre à gauche
 		
-		//Tags favoris
-		Label tagsTitre = new Label("Find Your Tags"); //Création d'un titre
-		tagsTitre.setPadding(new Insets(10)); //Ajoute de l'espace autour du titre
-		tagsTitre.setFont(Font.font("Arial", FontWeight.BOLD, 12)); //Police Arial, en gras et de taille 12
-		//Création d'un conteneur VBox (vertical)
-		VBox tagsLiens = new VBox(); 
-		//Création des liens
-		Hyperlink alternateUniverse = new Hyperlink("Alternate Universe");
-		Hyperlink angst = new Hyperlink("Angst");
-		Hyperlink fluff = new Hyperlink("Fluff");
-		Hyperlink family = new Hyperlink("Family");
-		Hyperlink friendship = new Hyperlink("Friendship");
-		Hyperlink hurtComfort = new Hyperlink("Hurt/Comfort");
-		Hyperlink love = new Hyperlink("Love");
-		Hyperlink notCanonCompliant = new Hyperlink("Not Canon Compliant");
-		Hyperlink relationship = new Hyperlink("Relationship(s)");
-		Hyperlink romance = new Hyperlink("Romance");
-		//Affectation des liens dans le conteneur
-		tagsLiens.getChildren().addAll(
-				alternateUniverse, 
-				angst, 
-				fluff, 
-				family, 
-				friendship, 
-				hurtComfort, 
-				love, 
-				notCanonCompliant, 
-				relationship, 
-				romance);
+        
 		
-		
-		
+        //Volet Filters
+        
+        //Titre
+        Label filtersTitre = new Label("Filters");
+        filtersTitre.setFont(Font.font("Arial", FontWeight.BOLD, 14)); //Police Arial, en gras et de taille 12
+        filtersTitre.setPadding(new Insets(10)); // Ajoute un espace de 10 autour du titre
+        
+        //Menu déroulant pour les boutons checkbox
+        MenuButton warnings = new MenuButton("Warnings");
+		warnings.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+
+
+        // Création des checkboxs
+        CheckBox checkBox1 = new CheckBox("No Archive Warnings Apply  Creator Chose");
+        CheckBox checkBox2 = new CheckBox("Not To Use Archive Warnings");
+        CheckBox checkBox3 = new CheckBox("Graphic Depictions Of Violence");
+        CheckBox checkBox4 = new CheckBox("Major Character Death");
+        CheckBox checkBox5 = new CheckBox("Underage");
+        CheckBox checkBox6 = new CheckBox("Rape/Non-Con");
+        
+        //Ajout des boutons checkbox dans le menu déroulant
+        warnings.getItems().addAll(
+        	    new CustomMenuItem(checkBox1), 
+        	    new CustomMenuItem(checkBox2), 
+        	    new CustomMenuItem(checkBox3), 
+        	    new CustomMenuItem(checkBox4), 
+        	    new CustomMenuItem(checkBox5), 
+        	    new CustomMenuItem(checkBox6)
+        	);
+
+        //Autres filtres 
+        MenuButton ratings = new MenuButton("Ratings");
+        ratings.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+        MenuButton relationships = new MenuButton("Relationships");
+        relationships.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+        MenuButton addTags = new MenuButton("Add Tags");
+        addTags.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+        MenuButton completionStatus = new MenuButton("Completion Status");
+        completionStatus.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+        MenuButton crossovers = new MenuButton("Crossovers");
+        crossovers.setPadding(new Insets(5)); //Crée de l'espace interieur pour agrandir le filtre
+       
+        
+        //Volet filters
+        
+        //Conteneur VBox (vertical) pour le volet filters à droite de la page
+		VBox filters = new VBox (40, filtersTitre, warnings, ratings, relationships, addTags, completionStatus, crossovers);
+		filters.setStyle("-fx-background-color: #F2EEEE; -fx-background-radius: 10px;");
+		filters.setPrefSize(600, 685); //L'affichage de la section est fixé à 600 par 685
+        filters.setPadding(new Insets(20));// Crée de l'espace a gauche du volet de filters
+     
+       
 		/**
 		 * ----------------------- Assemblage Body -----------------------
 		 * Création de : 
-		 * - slogan
-		 * - fandoms favoris
-		 * - tags favoris
-		 * - body (slogan + famdoms favoris + tags favoris)
+		 * - l'en-tête
+		 * - volet à gauche
+		 * - volet à droite
+		 * - body (en-tête + (volet gauche et volet droite)
 		 */
 		
-		//Création du slogan dans un conteneur VBox (vertical)
-		VBox sloganAll = new VBox(5, slogan1, slogan2); //Espace de 10 entre slogan1 et slogan2
-		sloganAll.setAlignment(Pos.CENTER); //Alignement au centre
-		sloganAll.setPadding(new Insets(15)); //Espace de 15 autour du slogan
-
-		//Création de Fandoms favoris dans un conteneur VBox (vertical)
-		VBox fav = new VBox(favoritesTitre, favoritesLiens); //Contient le titre et les liens 
-		fav.setAlignment(Pos.TOP_CENTER); //Aligne le contenu (titre + liens) en haut au centre
-		fav.setStyle("-fx-background-color: F2EEEE; -fx-background-radius: 10px;"); //Fond gris clair et bordures arrondies
-		fav.setPrefSize(250, 200); //L'affichage de la section est fixé à 250 par 200
+		//En-tête
+		VBox entete = new VBox (booksAndLiterature, pagination, sortBy);
 		
-		//Création de Tags favoris dans un conteneur VBox (vertical)
-		VBox tag = new VBox(tagsTitre, tagsLiens); //Contient le titre et les liens 
-		tag.setAlignment(Pos.TOP_CENTER); //Aligne le contenu (titre + liens) en haut au centre
-		tag.setStyle("-fx-background-color: F2EEEE; -fx-background-radius: 10px;"); //Fond gris clair et bordures arrondies
-		tag.setPrefSize(250, 200); //L'affichage de la section est fixé à 250 par 200
+		//Volet à gauche
+		VBox colonneGauche = new VBox(20, section1, section2,section3);
+		colonneGauche.setPrefSize(1000, 0);
 		
-		//Fusion de Fandoms et Tags dans un conteneur HBox (horizontal)
-		HBox groupeFandomsTags = new HBox(100,fav,tag); //Espace de 100 entre Fandoms et Tags
-		groupeFandomsTags.setAlignment(Pos.CENTER); //Alignement au centre
+		//Volet à droite
+		VBox colonneDroite = new VBox(20, filters);
 		
-		//Fusion de Slogan et de Fandoms / Tags (déjà fusionnés) pour créer le body dans un conteneur VBox (vertical)
-		VBox body = new VBox(sloganAll, groupeFandomsTags); //Dans l'odre, le slogan est au dessus de Fandoms / Tags
-		body.setPadding(new Insets(20)); // Ajoute un espace de 20 en bas
-		root.setCenter(body); //Place le body au centre de la fenêtre
+		//Fusion colonne gauche et droite
+		HBox groupement = new HBox(100, colonneGauche, colonneDroite);
+        
+        
+        VBox body = new VBox(20,entete, groupement);
+        body.setPadding(new Insets(20)); //Ajout d'un espace de 20 autour du body
+        root.setCenter(body); //Place le body au centre de la fenêtre
+         
 		
 		
-		
-		/**
+        /**
 		 * ----------------------- Footer -----------------------
 		 * Contient : 
 		 * - une colonne About the Archives
