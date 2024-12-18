@@ -44,7 +44,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		BorderPane root = new BorderPane();
-		Scene scene2 = new Scene(root,800,600);
 
 		/**
 		 * ----------------------- Header -----------------------

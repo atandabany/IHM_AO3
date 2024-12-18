@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -65,6 +67,17 @@ public class Page extends Application {
 		Button homeButton = new Button("Home");
 		homeButton.setFont(Font.font("Arial", FontWeight.BOLD, 20)); //Police Arial, en gras et de taille 20
 		homeButton.setTextFill(Color.WHITE); //Police blanche
+		
+		
+		//Evenement
+		homeButton.setOnAction(new EventHandler<ActionEvent>() { //On définit l'événement
+			public void handle(ActionEvent event) { //Methode pour etre redirigé vers une autre page 
+	                Main main = new Main(); //Instanciation de la page "Main"
+	                main.start(primaryStage); //Appel de la methode start de la classe Main pour afficher la page 
+	            }
+	        });
+		
+		
 		//Logo AO3
 		Image logo = new Image(getClass().getResourceAsStream("/images/logo_ao3.png"));
 		ImageView imageView = new ImageView(logo); //Vue pour afficher le logo AO3
