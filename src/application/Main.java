@@ -1,6 +1,8 @@
 package application;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -42,6 +44,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		BorderPane root = new BorderPane();
+		Scene scene2 = new Scene(root,800,600);
 
 		/**
 		 * ----------------------- Header -----------------------
@@ -52,7 +55,7 @@ public class Main extends Application {
 		
 		
 		/**
-		 * ----------------------- Bannnière -----------------------
+		 * ----------------------- Bannière -----------------------
 		 * Contient : 
 		 * - le bouton Home
 		 * - le logo AO3
@@ -64,6 +67,17 @@ public class Main extends Application {
 		Button homeButton = new Button("Home");
 		homeButton.setFont(Font.font("Arial", FontWeight.BOLD, 20)); //Police Arial, en gras et de taille 20
 		homeButton.setTextFill(Color.WHITE); //Police blanche
+		
+		
+		//Evenement
+		homeButton.setOnAction(new EventHandler<ActionEvent>() { //On définit l'événement
+			public void handle(ActionEvent event) { //Methode pour etre redirigé vers une autre page 
+	                Page page = new Page(); //Instanciation de la page "Page"
+	                page.start(primaryStage); //Appel de la methode start de la classe Page pour afficher la page 
+	            }
+	        });
+		
+		
 		//Logo AO3
 		Image logo = new Image(getClass().getResourceAsStream("/images/logo_ao3.png"));
 		ImageView imageView = new ImageView(logo); //Vue pour afficher le logo AO3

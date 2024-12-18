@@ -53,7 +53,7 @@ public class Page extends Application {
 		
 		
 		/**
-		 * ----------------------- Bannnière -----------------------
+		 * ----------------------- Bannière -----------------------
 		 * Contient : 
 		 * - le bouton Home
 		 * - le logo AO3
