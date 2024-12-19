@@ -329,9 +329,13 @@ public class Main extends Application {
 		VBox colonneUneLiens = new VBox(); 
 		//Création des liens
 		Hyperlink siteMap = new Hyperlink("Site Map");
+		siteMap.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink diversityStatement = new Hyperlink("Diversity Statement");
+		diversityStatement.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink termsOfService = new Hyperlink("Terms of Service");
+		termsOfService.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink dmcaPolicy = new Hyperlink("DMCA Policy");
+		dmcaPolicy.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		//Affectation des liens dans le conteneur
 		colonneUneLiens.getChildren().addAll(
 				siteMap, 
@@ -348,8 +352,11 @@ public class Main extends Application {
 		VBox colonneDeuxLiens = new VBox(); 
 		//Création des liens
 		Hyperlink policyQuestionsAbuseReports = new Hyperlink("Policy Questions & Abuse Reports");
+		policyQuestionsAbuseReports.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink technicalSupportFeedback = new Hyperlink("Technical Support & Feedback");
+		technicalSupportFeedback.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink news = new Hyperlink("News");
+		news.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		//Affectation des liens dans le conteneur
 		colonneDeuxLiens.getChildren().addAll(
 				policyQuestionsAbuseReports, 
@@ -365,8 +372,11 @@ public class Main extends Application {
 		VBox colonneTroisLiens = new VBox(); 
 		//Création des liens
 		Hyperlink otwarchive = new Hyperlink("otwarchive v0.9.379.1");
+		otwarchive.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink knownIssues = new Hyperlink("Known Issues");
+		knownIssues.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Hyperlink gpl = new Hyperlink("GPL-2.0-or-later by the OTW");
+		gpl.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		//Affectation des liens dans le conteneur
 		colonneTroisLiens.getChildren().addAll(
 				otwarchive, 
@@ -381,9 +391,11 @@ public class Main extends Application {
 		Image logoTwitter = new Image(getClass().getResourceAsStream("/images/logo_twitter.png"));
 		ImageView imageViewTwitter = new ImageView(logoTwitter); //Vue pour afficher le logo twitter
 		Hyperlink twitter = new Hyperlink("A03_Status on Twitter"); //Lien twitter
+		twitter.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		Image logoTumblr = new Image(getClass().getResourceAsStream("/images/logo_tumblr.png"));
 		ImageView imageViewTumblr = new ImageView(logoTumblr); //Vue pour afficher le logo tumblr
 		Hyperlink tumblr = new Hyperlink("ao3org on Tumblr"); //Lien tumblr
+		tumblr.setStyle("-fx-text-fill: black;"); //Lien de couleur noir
 		
 		
 		
